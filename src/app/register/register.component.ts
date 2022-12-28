@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -17,11 +17,11 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-        UserName: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(6)]],
+        userName: ['', Validators.required],
+        mail: ['', [Validators.required, Validators.email]],
+        pwd: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', Validators.required],
-        //acceptTerms: [false, Validators.requiredTrue]
+        acceptTerms: [false, Validators.requiredTrue]
     }, {
         //validators: [CustomValidators.match('password', 'passwordConfirm')]
     });
@@ -46,6 +46,8 @@ onReset() {
     this.submitted = false;
     this.registerForm.reset();
 }
+ 
+  
 }
  
 
